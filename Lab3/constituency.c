@@ -41,3 +41,17 @@ void printConstituency(struct Constituency * const obj){
     printf("]");
     printf("\n");
 };
+
+struct Constituency* copyConstituencies(struct Constituency constituencies[], unsigned int const numConstituencies) {
+  struct Constituency* copy = malloc(sizeof(struct Constituency) * numConstituencies);
+
+  for (int i = 0; i < numConstituencies; i++) {
+    copy[i].name = malloc(strlen(constituencies[i].name) + 1);
+    strcpy(copy[i].name, constituencies[i].name);
+    copy[i].numNeighbours = constituencies[i].numNeighbours;
+    copy[i].neighbours = malloc(sizeof(unsigned int) * copy[i].numNeighbours);
+    memcpy(copy[i].neighbours, constituencies[i].neighbours, sizeof(unsigned int) * copy[i].numNeighbours);
+  }
+
+  return copy;
+}
