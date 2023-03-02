@@ -4,31 +4,30 @@
 #include <string>
 
 class Cat {
-  private: 
-    unsigned int lives; 
-    std::string name;  
-    Cat(std::string x){
-        lives = 9;
-        name = x;
-    }
+    private: 
+        unsigned int lives; 
+        std::string name;  
+    public:
+        Cat();
+        
+        Cat(std::string name);
 
-    Cat(std::string x, unsigned int i){
-        lives = i;
-        name = x; 
-    }
-    ~Cat(){
-        delete[] name;
-    };
+        Cat(std::string name, unsigned int lives);
 
-    std::string Cat::get_name() const {
-        return name;
-    }
+        ~Cat();
 
-    unsigned int Cat::get_lives() const {
-        return lives;
-    }
+        std::string get_name() const {
+            return name;
+        };
+
+        unsigned int get_lives() const {
+            return lives;
+        };
+
+        void set_name(const std::string& name);
+
+        void set_lives(const unsigned int& lives);
+
 };
-
-
 
 #endif
